@@ -8,4 +8,4 @@ I make dope sh!t, `digitally`.
 
 [![Carlito Platanito on Instagram](https://icons.getbootstrap.com/assets/icons/instagram.svg) My Pics &amp; Memes](https://instagram.com/carlitoplatanito)
 
-[![Young Tef CFG on Soundcloud](https://icons.getbootstrap.com/assets/icons/soundwave.svg) Young Tef's Choons](https://soundcloud.com/carlito-platanito)
+[![Young Tef CFG on Soundcloud](https://icons.getbootstrap.com/assets/icons/soundwave.svg) Young Tefs Choons](https://soundcloud.com/carlito-platanito)
