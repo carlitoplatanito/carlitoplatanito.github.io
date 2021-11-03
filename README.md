@@ -1,6 +1,7 @@
-# 🚧 **CARLIT0** PLATANIT0
-
-I make dope sh!t, `digitally`.
+---
+title: 🚧 **CARLIT0** PLATANIT0
+description: I make dope sh!t, `digitally`.
+---
 
 ![Carlito Platanito](https://avatars.githubusercontent.com/u/137208)
 
