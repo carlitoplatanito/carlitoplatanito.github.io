@@ -1,3 +1,6 @@
+# `🚧 CARLITO PLATANITO`
+
+I make dope sh!t, `digitally`.
 
 ![Carlito Platanito](https://avatars.githubusercontent.com/u/137208)
 
