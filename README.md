@@ -4,8 +4,10 @@ I make dope sh!t, `digitally`.
 
 ![Carlito Platanito](https://avatars.githubusercontent.com/u/137208)
 
-[![Carlito Platanito on Github](https://icons.getbootstrap.com/assets/icons/github.svg) My Open Source Code](https://github.com/carlitoplatanito)
+- [`C0DE`](https://github.com/carlitoplatanito)
+- [`C0ULTURE`](https://instagram.com/carlitoplatanito)
+- [`C0MMENTS`](https://twitter.com/carl0splatan0s)
 
-[![Carlito Platanito on Instagram](https://icons.getbootstrap.com/assets/icons/instagram.svg) My Pics &amp; Memes](https://instagram.com/carlitoplatanito)
+---
 
-[![Young Tef CFG on Soundcloud](https://icons.getbootstrap.com/assets/icons/soundwave.svg) Young Tefs Choons](https://soundcloud.com/carlito-platanito)
+[![Young Tef CFG Music](https://soundcloud.com/carlito-platanito)
