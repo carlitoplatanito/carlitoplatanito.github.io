@@ -1,7 +1,3 @@
----
-title: 🚧 **CARLIT0** PLATANIT0
-description: I make dope sh!t, `digitally`.
----
 
 ![Carlito Platanito](https://avatars.githubusercontent.com/u/137208)
 
@@ -9,4 +5,4 @@ description: I make dope sh!t, `digitally`.
 
 [![Carlito Platanito on Instagram](https://icons.getbootstrap.com/assets/icons/instagram.svg) My Pics &amp; Memes](https://instagram.com/carlitoplatanito)
 
-[![Chozen Few on Soundcloud](https://icons.getbootstrap.com/assets/icons/soundwave.svg) My Team's Choons](https://soundcloud.com/carlitoplatanito)
+[![Young Tef CFG on Soundcloud](https://icons.getbootstrap.com/assets/icons/soundwave.svg) Young Tef's Choons](https://soundcloud.com/carlito-platanito)
