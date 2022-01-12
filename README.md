@@ -9,7 +9,8 @@ I make dope sh!t, `digitally`.
 - [`C0MMENTS`](https://twitter.com/carl0splatan0s) - Me just ranting & raving on Twitter (I don't post much)
 - [`C0INS`](bitcoin:bc1qg89kteddrnzdjpnp3mee8a2sgavr3fw42krph7) - Send me bitcoins, (if you don't have a wallet installed this link won't work the address is `bc1qg89kteddrnzdjpnp3mee8a2sgavr3fw42krph7` tho)
 
-[Let's Talk | Schedule Consultation](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2KFNBD4goxVFkJp_SSzSBBXgD7w5CnT1r51lJw1xM0JSG4m3JbeSsHgUTenqxxlmBXtpX0fyPV)
+> [Let's Talk | Schedule Consultation](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2KFNBD4goxVFkJp_SSzSBBXgD7w5CnT1r51lJw1xM0JSG4m3JbeSsHgUTenqxxlmBXtpX0fyPV)
+
 ---
 
 [Young Tef CFG Music](https://soundcloud.com/carlito-platanito)
