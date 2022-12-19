@@ -1,5 +1,8 @@
 {
   "names": {
     "_": "npub1klq6tmmueaw06ktklw39zytw60e6u0f76966nnj785e63y95dp9smqg5ss"
-  }
+  },
+  "relays": {
+    "npub1klq6tmmueaw06ktklw39zytw60e6u0f76966nnj785e63y95dp9smqg5ss": [ "wss://relay.damus.io" ]
+  },
 }
