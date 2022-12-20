@@ -1,4 +1,4 @@
-Github Page for [carlitoplatanito.com](https://carlitoplatantio.com)
+Github Page for [carlitoplatanito.com](https://carlitoplatanito.com)
 
 # `🚧 CARLITO PLATANITO`
 
