@@ -4,7 +4,7 @@
     "_": "npub1klq6tmmueaw06ktklw39zytw60e6u0f76966nnj785e63y95dp9smqg5ss"
   },
   "relays": {
-    "b7c1a5ef7ccf5cfd5976fba251116ed3f3ae3d3ed175a9ce5e3d33a890b4684b": [ "wss://mule.platanito.org", "wss://relay.damus.io" ]
+    "b7c1a5ef7ccf5cfd5976fba251116ed3f3ae3d3ed175a9ce5e3d33a890b4684b": [ "wss://mule.platanito.org", "wss://relay.damus.io" ],
     "npub1klq6tmmueaw06ktklw39zytw60e6u0f76966nnj785e63y95dp9smqg5ss": [ "wss://mule.platanito.org", "wss://relay.damus.io" ]
   }
 }
