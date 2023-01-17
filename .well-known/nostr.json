@@ -3,6 +3,6 @@
     "_": "b7c1a5ef7ccf5cfd5976fba251116ed3f3ae3d3ed175a9ce5e3d33a890b4684b"
   },
   "relays": {
-    "b7c1a5ef7ccf5cfd5976fba251116ed3f3ae3d3ed175a9ce5e3d33a890b4684b": [ "wss://mule.platanito.org", "wss://relay.damus.io", "wss://brb.io" ],
+    "b7c1a5ef7ccf5cfd5976fba251116ed3f3ae3d3ed175a9ce5e3d33a890b4684b": [ "wss://mule.platanito.org", "wss://relay.damus.io", "wss://brb.io" ]
   }
 }
