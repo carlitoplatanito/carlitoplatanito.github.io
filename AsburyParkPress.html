@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asbury Park Press | Opinion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif-text {
+            font-family: 'Libre+Baskerville', serif;
+        }
+        .app-logo {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 2.4rem;
+            letter-spacing: -1.5px;
+            color: #333;
+            font-weight: 900;
+        }
+        .app-dot {
+            color: #009bff;
+        }
+        .opinion-banner {
+            background-color: #f4ff5c; /* Bright yellow from screenshot */
+        }
+        .opinion-title {
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        .headline {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #111;
+        }
+        .ad-border {
+            border: 1px solid #e1e1e1;
+        }
+        .article-link {
+            color: #006699;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto min-h-screen bg-white">
+
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="flex justify-between items-center px-5 py-4">
+            <!-- Search Icon -->
+            <button class="text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            
+            <!-- Logo -->
+            <div class="app-logo">app<span class="app-dot">.</span></div>
+            
+            <!-- Hamburger Menu -->
+            <button class="text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="flex justify-center space-x-7 pb-3 text-[14px] font-bold tracking-tight">
+            <a href="#" class="text-[#006699] underline underline-offset-4 decoration-2">Subscribe</a>
+            <a href="#" class="text-gray-900">Sign In</a>
+            <a href="#" class="text-gray-900">Crossword</a>
+        </nav>
+    </header>
+
+    <!-- Advertisement Section -->
+    <div class="text-center pt-3 pb-1 text-[10px] text-gray-500 font-medium tracking-tight">Advertisement</div>
+    <div class="px-3 pb-4 border-b border-gray-100">
+        <div class="ad-border h-[65px] flex items-center overflow-hidden relative bg-[#fafafa]">
+             <div class="w-[110px] h-full relative overflow-hidden">
+                 <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=200" class="object-cover h-full w-full grayscale contrast-125" alt="Background">
+                 <div class="absolute inset-0 bg-black/10"></div>
+             </div>
+             <div class="flex-1 px-3 py-1 flex flex-col justify-center">
+                 <div class="text-[12px] font-bold leading-[1.2] text-gray-800">Your tax forms have all your info.</div>
+                 <div class="text-[11px] text-gray-600">Protect your identity with LifeLock.</div>
+             </div>
+             <div class="pr-3 flex items-center">
+                 <img src="https://www.lifelock.com/content/dam/lifelock/images/logos/lifelock-logo-yellow.svg" class="w-16" alt="LifeLock">
+                 <div class="ml-1 text-[#00aaff]">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+                 </div>
+             </div>
+             <!-- Ad Choices Icon -->
+             <div class="absolute top-0 right-0 p-0.5">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="#00aaff"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+             </div>
+        </div>
+    </div>
+
+    <!-- Opinion Banner -->
+    <div class="opinion-banner px-4 py-4">
+        <h2 class="opinion-title uppercase mb-1">Opinion</h2>
+        <p class="italic text-[14px] leading-tight text-gray-900 serif-text">
+            This piece expresses the views of its author(s), separate from those of this publication.
+        </p>
+    </div>
+
+    <!-- Article Content -->
+    <article class="px-4 pt-8 pb-12">
+        <h1 class="headline text-[32px] mb-5">
+            Sorry Asbury, but the best rapper from Asbury Park is from Neptune
+        </h1>
+
+        <div class="text-gray-700 text-[16px] italic mb-5">
+            3-minute read
+        </div>
+
+        <div class="mb-8">
+            <div class="font-bold text-[16px] text-gray-900">Kenneth Rapoza <span class="font-normal text-gray-500">Special to the USA TODAY Network</span></div>
+            <div class="text-gray-500 text-[14px] mt-0.5">March 11, 2026, 8:30 p.m. ET</div>
+        </div>
+
+        <div class="serif-text text-[20px] leading-[1.6] text-[#222] space-y-6">
+            <p>
+                The bidding war over the Jersey Shore hip-hop crown appears <a href="#" class="article-link">to have been won by a Neptune native</a>. It has become a high stakes battle over shareholder value and rights, as well as the future of the local music industry. 
+            </p>
+            <p>
+                In the end, the storied reputation of the "Circuit City" is likely to go to the highest bidder. For a while, the Asbury board was pitted against the neighbors following last December's growth. 
+            </p>
+            <p>
+                Emerging from a village in Neptune, <strong>Young Tef</strong>—now known as <strong>TEF Chozen Few</strong>—worked his way into the Asbury Park rap scene and became known as the city's best, even though he consistently corrects the record that he is from Neptune.
+            </p>
+            <p>
+                The rebranding represents the growth and maturity of an artist who carries the torch for the <strong>Chozen Few</strong> crew. Today, that legacy lives on through his business engine, <strong>Chozen Media Group</strong>.
+            </p>
+            <p>
+                His newer music offers an unfiltered and relatable storytelling, touching on narratives ranging from the familiar to the traumatic. Whether Asbury wants to admit it or not, the best voice in the city belongs to Neptune.
+            </p>
+        </div>
+    </article>
+
+</body>
+</html>
+
