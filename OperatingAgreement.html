@@ -1,0 +1,478 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { 
+  Plus, 
+  Trash2, 
+  Download, 
+  FileText, 
+  Users, 
+  Shield, 
+  DollarSign, 
+  ChevronRight, 
+  ChevronLeft,
+  Building,
+  CheckCircle,
+  Printer,
+  Copy,
+  Check
+} from 'lucide-react';
+
+const App = () => {
+  // --- State Management ---
+  const [step, setStep] = useState(1);
+  const [copyStatus, setCopyStatus] = useState('');
+  const [formData, setFormData] = useState({
+    llcName: '',
+    formationDate: new Date().toISOString().split('T')[0],
+    businessPurpose: 'To engage in any and all lawful business for which a limited liability company may be organized under the laws of the State of New Jersey.',
+    managementType: 'member', // 'member' or 'manager'
+    registeredAgentName: '',
+    registeredAgentAddress: '',
+    members: [
+      { id: crypto.randomUUID(), name: '', contribution: 0, percentage: 100 }
+    ],
+    managers: []
+  });
+
+  // --- Calculations ---
+  const totalContribution = useMemo(() => {
+    return formData.members.reduce((sum, m) => sum + (parseFloat(m.contribution) || 0), 0);
+  }, [formData.members]);
+
+  // Auto-calculate percentages based on contribution
+  useEffect(() => {
+    if (totalContribution > 0) {
+      const updatedMembers = formData.members.map(m => ({
+        ...m,
+        percentage: ((parseFloat(m.contribution) || 0) / totalContribution * 100).toFixed(2)
+      }));
+      const hasChanged = updatedMembers.some((m, i) => m.percentage !== formData.members[i].percentage);
+      if (hasChanged) {
+        setFormData(prev => ({ ...prev, members: updatedMembers }));
+      }
+    } else if (formData.members.length === 1) {
+      if (formData.members[0].percentage !== 100) {
+        setFormData(prev => ({
+          ...prev,
+          members: [{ ...prev.members[0], percentage: 100 }]
+        }));
+      }
+    }
+  }, [totalContribution, formData.members]);
+
+  // --- Handlers ---
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const addMember = () => {
+    setFormData(prev => ({
+      ...prev,
+      members: [...prev.members, { id: crypto.randomUUID(), name: '', contribution: 0, percentage: 0 }]
+    }));
+  };
+
+  const removeMember = (id) => {
+    if (formData.members.length > 1) {
+      setFormData(prev => ({
+        ...prev,
+        members: prev.members.filter(m => m.id !== id)
+      }));
+    }
+  };
+
+  const updateMember = (id, field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      members: prev.members.map(m => m.id === id ? { ...m, [field]: value } : m)
+    }));
+  };
+
+  const addManager = () => {
+    setFormData(prev => ({
+      ...prev,
+      managers: [...prev.managers, { id: crypto.randomUUID(), name: '' }]
+    }));
+  };
+
+  const removeManager = (id) => {
+    setFormData(prev => ({
+      ...prev,
+      managers: prev.managers.filter(m => m.id !== id)
+    }));
+  };
+
+  const updateManager = (id, value) => {
+    setFormData(prev => ({
+      ...prev,
+      managers: prev.managers.map(m => m.id === id ? { ...m, name: value } : m)
+    }));
+  };
+
+  const printDocument = () => {
+    window.focus();
+    window.print();
+  };
+
+  const copyToClipboard = () => {
+    const element = document.getElementById('agreement-content');
+    if (!element) return;
+    
+    // Create a temporary textarea to handle the copy
+    const text = element.innerText;
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+      document.execCommand('copy');
+      setCopyStatus('Copied!');
+      setTimeout(() => setCopyStatus(''), 2000);
+    } catch (err) {
+      setCopyStatus('Failed to copy');
+    }
+    
+    document.body.removeChild(textArea);
+  };
+
+  // --- UI Components ---
+  const StepIndicator = () => (
+    <div className="flex items-center justify-center mb-8 space-x-4 no-print">
+      {[1, 2, 3, 4].map((i) => (
+        <div key={i} className="flex items-center">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= i ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+            {step > i ? <CheckCircle size={16} /> : i}
+          </div>
+          {i < 4 && <div className={`w-12 h-1 ml-4 rounded ${step > i ? 'bg-blue-600' : 'bg-gray-200'}`} />}
+        </div>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-900">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Header - Hidden on Print */}
+        <header className="mb-8 flex flex-col md:flex-row md:items-center justify-between no-print">
+          <div>
+            <h1 className="text-3xl font-extrabold text-slate-800 flex items-center gap-2">
+              <Shield className="text-blue-600" /> NJ LLC Architect
+            </h1>
+            <p className="text-slate-500 mt-1">Generate a professional New Jersey Operating Agreement</p>
+          </div>
+          <div className="mt-4 md:mt-0 flex gap-2">
+            {step === 4 && (
+              <>
+                <button 
+                  onClick={copyToClipboard}
+                  className="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg transition shadow-sm"
+                >
+                  {copyStatus === 'Copied!' ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
+                  {copyStatus || 'Copy Text'}
+                </button>
+                <button 
+                  onClick={printDocument}
+                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition shadow-sm"
+                >
+                  <Printer size={18} /> Export / Print
+                </button>
+              </>
+            )}
+          </div>
+        </header>
+
+        <main className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden print-container">
+          
+          {/* Form Section - Hidden on Print */}
+          <div className={`p-6 md:p-10 no-print ${step === 4 ? 'hidden' : 'block'}`}>
+            <StepIndicator />
+
+            {/* Step 1: Basic Info */}
+            {step === 1 && (
+              <div className="space-y-6 animate-in fade-in duration-500">
+                <div className="flex items-center gap-2 text-xl font-bold border-b pb-2">
+                  <Building className="text-blue-600" size={24} /> Basic Company Information
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">LLC Name</label>
+                    <input 
+                      type="text" 
+                      name="llcName"
+                      placeholder="e.g., Chozen Media Group, LLC"
+                      value={formData.llcName}
+                      onChange={handleInputChange}
+                      className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2">Effective Formation Date</label>
+                    <input 
+                      type="date" 
+                      name="formationDate"
+                      value={formData.formationDate}
+                      onChange={handleInputChange}
+                      className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">Business Purpose</label>
+                  <textarea 
+                    name="businessPurpose"
+                    value={formData.businessPurpose}
+                    onChange={handleInputChange}
+                    rows="3"
+                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Step 2: Ownership */}
+            {step === 2 && (
+              <div className="space-y-6 animate-in fade-in duration-500">
+                <div className="flex items-center justify-between border-b pb-2">
+                  <div className="flex items-center gap-2 text-xl font-bold">
+                    <Users className="text-blue-600" size={24} /> Ownership & Members
+                  </div>
+                  <button 
+                    onClick={addMember}
+                    className="text-sm flex items-center gap-1 bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-md transition text-slate-700"
+                  >
+                    <Plus size={16} /> Add Member
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  {formData.members.map((member) => (
+                    <div key={member.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 relative group">
+                      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                        <div className="md:col-span-6">
+                          <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Full Name</label>
+                          <input 
+                            type="text" 
+                            value={member.name}
+                            placeholder="John Doe"
+                            onChange={(e) => updateMember(member.id, 'name', e.target.value)}
+                            className="w-full p-2 bg-white border border-slate-200 rounded-lg outline-none"
+                          />
+                        </div>
+                        <div className="md:col-span-3">
+                          <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Initial Contribution ($)</label>
+                          <div className="relative">
+                            <DollarSign className="absolute left-2 top-2.5 text-slate-400" size={16} />
+                            <input 
+                              type="number" 
+                              value={member.contribution}
+                              onChange={(e) => updateMember(member.id, 'contribution', e.target.value)}
+                              className="w-full pl-7 pr-2 py-2 bg-white border border-slate-200 rounded-lg outline-none"
+                            />
+                          </div>
+                        </div>
+                        <div className="md:col-span-2">
+                          <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Ownership %</label>
+                          <div className="p-2 bg-slate-100 border border-transparent rounded-lg font-mono text-center">
+                            {member.percentage}%
+                          </div>
+                        </div>
+                        <div className="md:col-span-1 flex justify-center">
+                          {formData.members.length > 1 && (
+                            <button 
+                              onClick={() => removeMember(member.id)}
+                              className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition"
+                            >
+                              <Trash2 size={20} />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Step 3: Management */}
+            {step === 3 && (
+              <div className="space-y-6 animate-in fade-in duration-500">
+                <div className="flex items-center gap-2 text-xl font-bold border-b pb-2">
+                  <Shield className="text-blue-600" size={24} /> Management & Agent
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <button 
+                    onClick={() => setFormData(prev => ({ ...prev, managementType: 'member' }))}
+                    className={`p-6 rounded-xl border-2 text-left transition ${formData.managementType === 'member' ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
+                  >
+                    <div className="font-bold">Member-Managed</div>
+                    <p className="text-sm text-slate-500 mt-1">Owners handle daily operations.</p>
+                  </button>
+                  <button 
+                    onClick={() => setFormData(prev => ({ ...prev, managementType: 'manager' }))}
+                    className={`p-6 rounded-xl border-2 text-left transition ${formData.managementType === 'manager' ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
+                  >
+                    <div className="font-bold">Manager-Managed</div>
+                    <p className="text-sm text-slate-500 mt-1">Appointed specific Managers.</p>
+                  </button>
+                </div>
+
+                <div className="pt-6 border-t">
+                  <h3 className="text-lg font-bold mb-4">NJ Registered Agent</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input 
+                      type="text" 
+                      name="registeredAgentName"
+                      value={formData.registeredAgentName}
+                      onChange={handleInputChange}
+                      placeholder="Agent Name"
+                      className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                    <input 
+                      type="text" 
+                      name="registeredAgentAddress"
+                      value={formData.registeredAgentAddress}
+                      onChange={handleInputChange}
+                      placeholder="Registered Office Address (NJ)"
+                      className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Navigation */}
+            <div className="mt-12 flex justify-between no-print">
+              <button 
+                onClick={() => setStep(prev => Math.max(1, prev - 1))}
+                disabled={step === 1}
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl transition ${step === 1 ? 'text-slate-300' : 'text-slate-600 hover:bg-slate-100'}`}
+              >
+                <ChevronLeft size={20} /> Back
+              </button>
+              
+              <button 
+                onClick={() => setStep(prev => Math.min(4, prev + 1))}
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl transition shadow-lg font-bold"
+              >
+                {step === 3 ? 'Generate Agreement' : 'Continue'} <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* DOCUMENT PREVIEW / PRINT VIEW */}
+          <div id="agreement-document" className={`p-10 md:p-16 text-slate-900 bg-white font-serif leading-relaxed ${step === 4 ? 'block' : 'hidden'}`}>
+            <div id="agreement-content" className="max-w-[800px] mx-auto space-y-8">
+              
+              <div className="text-center space-y-4 border-b-2 border-slate-900 pb-8">
+                <h1 className="text-3xl font-black uppercase tracking-widest">Operating Agreement</h1>
+                <h2 className="text-2xl font-bold">{formData.llcName || "[LLC NAME]"}</h2>
+                <p className="italic text-slate-600 font-sans uppercase text-sm tracking-widest">A New Jersey Limited Liability Company</p>
+              </div>
+
+              <div className="text-sm font-sans mb-8 no-print flex justify-between items-center bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <span className="flex items-center gap-2 text-blue-800 font-medium"><FileText size={16} /> Agreement Drafted Successfully</span>
+                <div className="flex gap-3">
+                  <button onClick={() => setStep(3)} className="text-blue-600 hover:underline font-bold">Edit</button>
+                </div>
+              </div>
+
+              <p className="text-justify">
+                This OPERATING AGREEMENT is made and entered into effective as of <strong>{new Date(formData.formationDate).toLocaleDateString()}</strong>, by and among the Members listed in the signature section of this Agreement (the "Members"), and the Company, <strong>{formData.llcName || "[LLC NAME]"}</strong>.
+              </p>
+
+              <section className="space-y-6">
+                <div>
+                  <h3 className="font-bold uppercase border-b border-slate-200 mb-2">Article I: Organization</h3>
+                  <p className="mb-2"><strong>1.1 Formation:</strong> The Members have formed a New Jersey Limited Liability Company by filing the Certificate of Formation with the New Jersey Division of Revenue pursuant to the Act.</p>
+                  <p className="mb-2"><strong>1.2 Registered Agent:</strong> The Company's initial registered agent is <strong>{formData.registeredAgentName || "[Agent Name]"}</strong> at <strong>{formData.registeredAgentAddress || "[Agent Address]"}</strong>.</p>
+                  <p className="mb-2"><strong>1.3 Purpose:</strong> {formData.businessPurpose}</p>
+                </div>
+
+                <div>
+                  <h3 className="font-bold uppercase border-b border-slate-200 mb-2">Article II: Management</h3>
+                  <p><strong>2.1 {formData.managementType === 'member' ? 'Member' : 'Manager'}-Managed:</strong> The Company shall be managed by its {formData.managementType === 'member' ? 'Members' : 'Managers'}. Decisions shall be made by a majority vote of the ownership interest.</p>
+                </div>
+
+                <div>
+                  <h3 className="font-bold uppercase border-b border-slate-200 mb-2">Article III: Capital & Ownership</h3>
+                  <table className="w-full border-collapse mb-4 text-sm font-sans">
+                    <thead>
+                      <tr className="bg-slate-50">
+                        <th className="border p-2 text-left">Member Name</th>
+                        <th className="border p-2 text-right">Contribution</th>
+                        <th className="border p-2 text-right">Ownership %</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {formData.members.map(m => (
+                        <tr key={m.id}>
+                          <td className="border p-2">{m.name || "[Member Name]"}</td>
+                          <td className="border p-2 text-right">${parseFloat(m.contribution).toLocaleString()}</td>
+                          <td className="border p-2 text-right">{m.percentage}%</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div>
+                  <h3 className="font-bold uppercase border-b border-slate-200 mb-2">Article IV: Governing Law</h3>
+                  <p>This Agreement shall be governed by and construed in accordance with the laws of the State of New Jersey.</p>
+                </div>
+              </section>
+
+              <div className="pt-12">
+                <h3 className="font-bold uppercase border-b border-slate-200 mb-8 text-center">Signatures</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                  {formData.members.map(m => (
+                    <div key={m.id} className="space-y-4">
+                      <div className="border-b border-slate-900 h-12 w-full"></div>
+                      <div className="text-xs font-sans">
+                        <p className="font-bold">{m.name || "MEMBER SIGNATURE"}</p>
+                        <p className="text-slate-500">Member</p>
+                        <p className="mt-1">Date: ____________________</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <style>{`
+        @media print {
+          body {
+            background-color: white !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          .no-print {
+            display: none !important;
+          }
+          .print-container {
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          #agreement-document {
+            display: block !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          @page {
+            margin: 2cm;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
+
