@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Brummer's Tree Service | 50 Years Experience in Monmouth County</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Slab:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- BRAND DESIGN SYSTEM VARIABLES --- */
+        :root {
+            --brand-primary: #26402E;    /* Forest Authority Green */
+            --brand-secondary: #B0905D;  /* Legacy Gold */
+            --brand-primary-dark: #1A2E20; 
+            --brand-secondary-light: #C9A975; 
+            --brand-neutral-100: #F4F1E1;  /* Heritage Cream */
+            --brand-neutral-900: #1C1C1C;  /* Iron Black */
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--brand-neutral-100);
+            color: var(--brand-neutral-900);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+            text-transform: uppercase;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        a { text-decoration: none; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--brand-secondary);
+            color: #fff;
+            padding: 15px 35px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover { background-color: var(--brand-secondary-light); }
+
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            background-color: var(--brand-neutral-100);
+            padding: 20px 0;
+            border-bottom: 4px solid var(--brand-primary);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-placeholder {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.8rem;
+            color: var(--brand-primary);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        .logo-placeholder span {
+            color: var(--brand-secondary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            display: block;
+            text-transform: none;
+            font-style: italic;
+        }
+        .contact-phone {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--brand-primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            /* Replace the URL below with the actual path to the hero image we generated */
+            background: linear-gradient(rgba(38, 64, 46, 0.75), rgba(38, 64, 46, 0.75)), url('hero-image-mark-brummer.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 120px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p.tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--brand-secondary);
+        }
+        .hero p.subtext {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- THE LEGACY (ABOUT) --- */
+        .legacy-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--brand-neutral-100);
+        }
+        .legacy-section h2 {
+            font-size: 2.5rem;
+            color: var(--brand-primary);
+            margin-bottom: 20px;
+        }
+        .legacy-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        .badge {
+            margin-top: 30px;
+            display: inline-block;
+            background-color: var(--brand-primary);
+            color: var(--brand-secondary);
+            padding: 10px 25px;
+            font-weight: bold;
+            font-family: 'Roboto Slab', serif;
+            letter-spacing: 2px;
+        }
+
+        /* --- SERVICES --- */
+        .services {
+            background-color: var(--brand-primary);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+        }
+        .service-card {
+            border: 2px solid var(--brand-secondary);
+            padding: 40px 20px;
+            background-color: var(--brand-primary-dark);
+        }
+        .service-card h3 {
+            color: var(--brand-secondary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        footer {
+            background-color: var(--brand-neutral-900);
+            color: var(--brand-neutral-100);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        footer h2 {
+            color: var(--brand-secondary);
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .contact-info a {
+            color: #fff;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: var(--brand-secondary);
+        }
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .header-content { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <span>Mark</span><br>BRUMMER'S
+            </div>
+            <div class="contact-phone">
+                Call the Master Arborist: <a href="tel:7325550199" style="color: var(--brand-primary);">(732) 555-0199</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Original Name in Tree Care.</h1>
+            <p class="tagline">50 Years in the Canopy.</p>
+            <p class="subtext">Don't trust a 5,000lb tree over your roof to just anyone. Experience matters. We provide precision tree removal and master pruning across Monmouth County.</p>
+            <a href="#contact" class="btn">Request a Free Estimate</a>
+        </div>
+    </section>
+
+    <section class="legacy-section">
+        <div class="container">
+            <h2>The Master's Touch</h2>
+            <p>Mark Brummer isn't just a business owner; he’s a lifelong arborist who grew up in the Monmouth County tree industry. With half a century of hands-on experience, Mark oversees every job himself to ensure your property's safety and your landscape's health. We are the original tradition of tree care.</p>
+            <div class="badge">EST. 1970s • OCEANPORT, NJ</div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Precision Removal</h3>
+                    <p>Safe, calculated dismantling of hazardous trees over homes and delicate structures using advanced rigging.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Master Pruning</h3>
+                    <p>Biology-based trimming and pruning to enhance the health, structure, and beauty of your canopy.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Storm Emergency</h3>
+                    <p>Rapid response hazard mitigation. When the storms hit Monmouth County, we are ready to secure your property.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Secure Your Property Today</h2>
+            <div class="contact-info">
+                <p><strong>Phone:</strong> <a href="tel:7325550199">(732) 555-0199</a></p>
+                <p><strong>Email:</strong> <a href="mailto:mark@markbrummer.com">mark@markbrummer.com</a></p>
+                <p style="margin-top: 15px;">Proudly rooted in Oceanport, NJ.</p>
+                <p>Serving all of Monmouth County.</p>
+            </div>
+            <a href="tel:7325550199" class="btn">Call Now</a>
+            
+            <p class="copyright">&copy; 2026 Mark Brummer's Tree Service. All Rights Reserved. <br>The Original Tradition.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
