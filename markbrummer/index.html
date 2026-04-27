@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Brummer's Tree Service | 50 Years Experience in Monmouth County</title>
+    <meta name="description" content="Mark Brummer's Tree Service offers 50 years of expert tree removal, pruning, and emergency tree care in Monmouth County, NJ. Fully licensed and insured.">
+    <title>Mark Brummer's Tree Service | Monmouth County Expert Arborist</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Slab:wght@700;900&display=swap" rel="stylesheet">
     <style>
         /* --- BRAND DESIGN SYSTEM VARIABLES --- */
@@ -13,6 +14,7 @@
             --brand-primary-dark: #1A2E20; 
             --brand-secondary-light: #C9A975; 
             --brand-neutral-100: #F4F1E1;  /* Heritage Cream */
+            --brand-neutral-200: #EAE5D4;  /* Slightly darker cream for section breaks */
             --brand-neutral-900: #1C1C1C;  /* Iron Black */
         }
 
@@ -48,6 +50,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            text-align: center;
         }
         .btn:hover { background-color: var(--brand-secondary-light); }
 
@@ -78,14 +81,21 @@
             font-style: italic;
         }
         .contact-phone {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--brand-neutral-900);
+            text-align: right;
+        }
+        .contact-phone a {
+            display: block;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--brand-primary);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            /* Replace the URL below with the actual path to the hero image we generated */
+            /* Replace with the generated hero image URL */
             background: linear-gradient(rgba(38, 64, 46, 0.75), rgba(38, 64, 46, 0.75)), url('hero-image-mark-brummer.jpg') center/cover no-repeat;
             color: #fff;
             padding: 120px 20px;
@@ -104,7 +114,7 @@
         }
         .hero p.subtext {
             font-size: 1.1rem;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 40px auto;
         }
 
@@ -142,9 +152,10 @@
             padding: 80px 20px;
             text-align: center;
         }
+        .services h2 { margin-bottom: 10px; }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 40px auto 0 auto;
@@ -157,22 +168,49 @@
         .service-card h3 {
             color: var(--brand-secondary);
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- SERVICE AREAS (SEO) --- */
+        .service-areas {
+            background-color: var(--brand-neutral-200);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .service-areas h2 {
+            font-size: 2rem;
+            color: var(--brand-primary);
+            margin-bottom: 15px;
+        }
+        .service-areas p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brand-neutral-900);
+            line-height: 1.8;
         }
 
         /* --- FOOTER / CONTACT --- */
         footer {
             background-color: var(--brand-neutral-900);
             color: var(--brand-neutral-100);
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
         footer h2 {
             color: var(--brand-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        footer p.footer-subtext {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
         }
         .contact-info {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
         }
         .contact-info a {
@@ -184,14 +222,15 @@
             color: var(--brand-secondary);
         }
         .copyright {
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .header-content { flex-direction: column; gap: 15px; text-align: center; }
+            .contact-phone { text-align: center; }
         }
     </style>
 </head>
@@ -203,58 +242,71 @@
                 <span>Mark</span><br>BRUMMER'S
             </div>
             <div class="contact-phone">
-                Call the Master Arborist: <a href="tel:7325550199" style="color: var(--brand-primary);">(732) 555-0199</a>
+                Oceanport's Trusted Local Arborist
+                <a href="tel:7325550199">(732) 555-0199</a>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>The Original Name in Tree Care.</h1>
-            <p class="tagline">50 Years in the Canopy.</p>
-            <p class="subtext">Don't trust a 5,000lb tree over your roof to just anyone. Experience matters. We provide precision tree removal and master pruning across Monmouth County.</p>
+            <h1>The Original Name in Monmouth County Tree Care.</h1>
+            <p class="tagline">50 Years of Keeping Our Neighbors Safe.</p>
+            <p class="subtext">From precision tree removal to expert pruning, Mark Brummer brings half a century of local experience right to your backyard. We protect your home, your family, and your property's beauty with the master's touch.</p>
             <a href="#contact" class="btn">Request a Free Estimate</a>
         </div>
     </section>
 
     <section class="legacy-section">
         <div class="container">
-            <h2>The Master's Touch</h2>
-            <p>Mark Brummer isn't just a business owner; he’s a lifelong arborist who grew up in the Monmouth County tree industry. With half a century of hands-on experience, Mark oversees every job himself to ensure your property's safety and your landscape's health. We are the original tradition of tree care.</p>
-            <div class="badge">EST. 1970s • OCEANPORT, NJ</div>
+            <h2>A Lifetime of Local Roots: The Master's Touch</h2>
+            <p>Born and raised right here in Oceanport, Mark Brummer has been caring for the trees in our community since childhood. With 50 years of hands-on experience, Mark oversees every job himself. When you hire us, you're not getting a faceless corporate crew—you're getting a dedicated neighbor who knows local soil, local weather, and exactly what it takes to keep your property safe and healthy year-round. We are the original tradition of local tree care.</p>
+            <div class="badge">EST. 1970s • FULLY LICENSED & INSURED</div>
         </div>
     </section>
 
     <section class="services">
         <div class="container">
-            <h2>Our Expertise</h2>
+            <h2>Comprehensive Tree Services for Your Home</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Precision Removal</h3>
-                    <p>Safe, calculated dismantling of hazardous trees over homes and delicate structures using advanced rigging.</p>
+                    <h3>Safe Tree Removal</h3>
+                    <p>Whether it's a dead oak leaning toward your roof or clearing space for a project, we safely dismantle and remove hazardous trees without a trace.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Master Pruning</h3>
-                    <p>Biology-based trimming and pruning to enhance the health, structure, and beauty of your canopy.</p>
+                    <h3>Expert Pruning & Trimming</h3>
+                    <p>Proper trimming keeps your trees healthy. We use biology-based pruning to shape your canopy, prevent disease, and let sunlight into your yard.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Storm Emergency</h3>
-                    <p>Rapid response hazard mitigation. When the storms hit Monmouth County, we are ready to secure your property.</p>
+                    <h3>24/7 Emergency Storm Service</h3>
+                    <p>Jersey storms are unpredictable. If heavy winds bring a branch down, our local crew is on standby to respond fast and secure your home.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Stump Grinding & Clean-Up</h3>
+                    <p>Complete your landscape transformation. We grind unsightly stumps down below the soil line so you can seamlessly reclaim your yard.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="service-areas">
+        <div class="container">
+            <h2>Proudly Serving Our Neighbors In:</h2>
+            <p>Oceanport • Rumson • Little Silver • Fair Haven • Red Bank • Shrewsbury • Long Branch • And all surrounding communities throughout Monmouth County, NJ.</p>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="container">
-            <h2>Secure Your Property Today</h2>
+            <h2>Let's Look At Your Trees Together.</h2>
+            <p class="footer-subtext">Get a free, honest estimate from Mark himself. No pressure—just expert advice from Monmouth County's most experienced arborist.</p>
+            
             <div class="contact-info">
                 <p><strong>Phone:</strong> <a href="tel:7325550199">(732) 555-0199</a></p>
                 <p><strong>Email:</strong> <a href="mailto:mark@markbrummer.com">mark@markbrummer.com</a></p>
-                <p style="margin-top: 15px;">Proudly rooted in Oceanport, NJ.</p>
-                <p>Serving all of Monmouth County.</p>
             </div>
-            <a href="tel:7325550199" class="btn">Call Now</a>
+            
+            <a href="tel:7325550199" class="btn">Call Mark Today</a>
             
             <p class="copyright">&copy; 2026 Mark Brummer's Tree Service. All Rights Reserved. <br>The Original Tradition.</p>
         </div>
